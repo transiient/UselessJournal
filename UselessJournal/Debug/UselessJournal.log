@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\dublect\documents\github\uselessjournal\uselessjournal\src\modeselector.h(87): warning C4715: 'ModeSelector::selector': not all control paths return a value
+  UselessJournal.vcxproj -> C:\Users\DUBLECT\Documents\GitHub\UselessJournal\Debug\UselessJournal.exe
+  UselessJournal.vcxproj -> C:\Users\DUBLECT\Documents\GitHub\UselessJournal\Debug\UselessJournal.pdb (Partial PDB)
