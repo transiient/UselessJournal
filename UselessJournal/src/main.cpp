@@ -23,9 +23,11 @@ int main() {
 	switch (selected) {
 	case 0:
 		// 0 is New Note
-		NotesManager.newNote();
 	case 1:
 		// 1 is Modify Note
+		cout << "Which note ID?: ";
+		int ttitid;
+		cin >> ttitid;
 	case 2:
 		// 2 is Exit
 		cout << "Bye!" << endl;

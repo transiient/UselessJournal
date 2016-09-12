@@ -1,19 +1,16 @@
+#include <iostream>
+
 #include "Notes.h"
 
-// Notes class
-Note::Note(string noteTitle, string noteBody) {
-
+// Note class
+note::note(string noteTitle, string noteBody) {
+	this->noteTitle = noteTitle;
+	this->noteTitle = noteBody;
 }
-Note::~Note() {
+note::~note() {
 	delete this;
 }
-void Note::Modify() {
-
-}
-
-void NotesManager::newNoteWizard() {
-
-}
-void NotesManager::modNoteWizard() {
-
+void note::Modify(string newTitle, string newBody) {
+	this->noteBody = newBody;
+	this->noteTitle = newTitle;
 }

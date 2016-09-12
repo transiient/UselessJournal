@@ -2,26 +2,17 @@
 
 #include <string>
 #include <vector>
-using namespace std; // sorry c++ gods
+using namespace std;
 
 // Single Note
-class Note {
-private:
+class note {
 	int noteId;
-	string mNoteTitle, mNoteBody;
+	string noteTitle, noteBody;
 public:
-	Note(string noteTitle, string noteBody);
-	~Note();
+	note(string noteTitle, string noteBody);
+	~note();
 
-	void Modify();
-};
-
-// Managing Notes
-class NotesManager {
-private:
-	vector<string> notes;
-public:
-	void newNoteWizard();
-	void modNoteWizard(int noteId);
-	void modNoteWizard(string noteTitle);
+	string getNoteBody();
+	string getNoteBody(); // returns: current body
+	string changeNoteBody(); // returns: new body
 };
