@@ -17,6 +17,16 @@ int NoteAPI::getNoteID(note findThis) {
 	return -1;
 }
 
+// Find a note at an index and return it, returns a blank note if not found
+note NoteAPI::getNoteAtIndex(int id) {
+	//if (std::find(m_Journal.begin(), m_Journal.end(), id) != m_Journal.end()) {
+		return m_Journal[id];
+	//}
+	//else {
+	//	return note("", "");
+	//}
+}
+
 int NoteAPI::addNoteToJournal(note newNote) {
 	m_Journal.push_back(newNote);
 
@@ -33,6 +43,9 @@ std::vector<note> NoteAPI::getJournal() {
 
 note NoteAPI::newNoteWizard() {
 	std::string newNoteTitle, newNoteBody;
+
+	// Clear screen to draw
+	for (int i = 0; i < 60; i++) std::cout << std::endl;
 
 	std::cout << "New note" << std::endl << std::endl;
 	std::cout << "  Title: ";
@@ -58,18 +71,31 @@ void NoteAPI::manageNotes() {
 		return;
 	}
 	else {
-		ModeSelector manageMenu;
+		ModeSelector journalMenu;
+		journalMenu.setType("Journal");
 		int option;
 		std::vector<std::string> newChoices;
 
-		for (int i = 0; m_Journal.size() > i; i++) {
-			//std::cout << "  " << i << ": " << m_Journal[i].getNoteTitle() << std::endl;
+		for (unsigned int i = 0; m_Journal.size() > i; i++) {
 			newChoices.push_back(m_Journal[i].getNoteTitle());
 		}
 
-		manageMenu.updateChoices(newChoices);
-		manageMenu.selector(option);
+		journalMenu.updateChoices(newChoices);
+		journalMenu.selector(option);
 
-		system("PAUSE"); // temp. debug
+		note returnedNote = getNoteAtIndex(option);
+
+		// Clear screen to draw note detail
+		for (int i = 0; i < 60; i++) std::cout << std::endl;
+
+		std::cout << "** " << returnedNote.getNoteTitle() << " **" << std::endl << std::endl;
+		std::cout << returnedNote.getNoteBody() << std::endl << std::endl;
+
+		// Show editor controls
+		std::cout << "Press any key to go back" << std::endl;
+
+		std::cin.clear(); std::cin.ignore();
+
+		return;
 	}
 }

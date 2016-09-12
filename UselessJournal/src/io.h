@@ -1,4 +1,4 @@
 #pragma once
 
-/* Common IO operations */
+/* Common file IO operations */
 

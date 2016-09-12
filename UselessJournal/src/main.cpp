@@ -6,10 +6,10 @@
 #include "ModeSelector.h"
 
 int main() {
-	std::cout << "Welcome to UselessJournal - The journal application that doesn't save your notes after closing!" << std::endl;
-
 	int selected = 0;
 	ModeSelector mainMenu;
+
+	mainMenu.setType("Main Menu");
 
 	while (!selected) {
 		mainMenu.selector(selected);
@@ -18,9 +18,11 @@ int main() {
 		case 0: // New Note
 			NoteAPI::newNoteWizard();
 			selected = 0;
+			break;
 		case 1: // Manage Notes
 			NoteAPI::manageNotes();
 			selected = 0;
+			break;
 		case 2: // Exit
 			std::cout << "Bye!" << std::endl;
 			break;

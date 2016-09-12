@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 #include "ModeSelector.h"
 #include "Notes.h"
@@ -14,6 +15,8 @@ class NoteAPI {
 private:
 	static std::vector<note> m_Journal; // TODO: Make it work.
 public:
+	// Find a note at an index and return it
+	static note getNoteAtIndex(int id);
 	// Find a note and return its ID. Returns -1 if not found.
 	static int getNoteID(note findThis);
 	// Add a note to the journal

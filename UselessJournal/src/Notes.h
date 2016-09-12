@@ -17,4 +17,7 @@ public:
 	friend bool operator==(const note &l, const note &r) {
 		return (l.noteTitle == r.noteTitle && l.noteBody == r.noteBody);
 	}
+	bool exists() {
+		return 1;
+	}
 };

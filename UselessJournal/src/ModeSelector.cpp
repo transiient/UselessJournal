@@ -16,30 +16,44 @@ std::string ModeSelector::isSelected(int id) {
 	}
 }
 
-void ModeSelector::setDefaultChoices() { m_CurrentChoices = m_DefaultChoices; }
+// ------------
+// Public
+// ------------
+
+void ModeSelector::setType(std::string newType) {
+	m_MenuType = newType;
+}
+
+std::string ModeSelector::getType() {
+	return m_MenuType;
+}
+
+void ModeSelector::setDefaultChoices() {
+	m_CurrentChoices = m_DefaultChoices;
+}
 
 void ModeSelector::updateChoices(std::vector<std::string> newChoices) {
 	m_CurrentChoices = newChoices;
 	refreshMenu();
 }
 
-// ------------
-// Refresh menu
-// ------------
-
 void ModeSelector::refreshMenu() {
-	for (int i = 0; i < 30; i++) std::cout << std::endl;
+	// Clear screen to redraw
+	for (int i = 0; i < 60; i++) std::cout << std::endl;
 
-	std::cout << "Select an operation (use W, S and Enter to select):" << std::endl << std::endl;
+	std::cout << "Useless Journal :: " << m_MenuType << std::endl << std::endl << std::endl << std::endl << std::endl;
+	std::cout << "Select an option (use the Up and Down arrows, Enter to select):" << std::endl << std::endl;
 
-	// Generate menu
-	for (int i = 0; i < m_DefaultChoices.size(); i++) {
-		std::cout << isSelected(i) << " " << m_DefaultChoices[i] << std::endl;
+	// Generate menu from m_CurrentChoices
+	for (int i = 0; i < m_CurrentChoices.size(); i++) {
+		std::cout << isSelected(i) << " " << m_CurrentChoices[i] << std::endl;
 	}
 }
 
 void ModeSelector::selector(int &variable) {
-	setDefaultChoices();
+	if (m_CurrentChoices.size() == 0) {
+		setDefaultChoices();
+	}
 
 	bool selected = 0;
 
@@ -53,14 +67,14 @@ void ModeSelector::selector(int &variable) {
 		else inputchar = inputchartest;
 
 		if (inputchar == KEY_MENU_DOWN) {
-			if (currentSelection == 2)
+			if (currentSelection == m_CurrentChoices.size() - 1) // If the current selection is the last index
 				makeSelected(0);
 			else
 				makeSelected(currentSelection + 1);
 		}
 		else if (inputchar == KEY_MENU_UP) {
 			if (currentSelection == 0)
-				makeSelected(2);
+				makeSelected(m_CurrentChoices.size() - 1);
 			else
 				makeSelected(currentSelection - 1);
 		}
