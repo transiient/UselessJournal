@@ -10,7 +10,8 @@ public:
 	note(std::string noteTitle, std::string noteBody);
 	~note();
 
-	std::string getNoteBody(); // returns: current body
+	std::string getNoteTitle(); // returns title
+	std::string getNoteBody(); // returns body
 	std::string changeNoteBody(std::string newNoteBody); // returns: new body
 
 	friend bool operator==(const note &l, const note &r) {

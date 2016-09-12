@@ -111,6 +111,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ModeSelector.cpp" />
+    <ClCompile Include="src\NoteManager.cpp" />
     <ClCompile Include="src\Notes.cpp" />
   </ItemGroup>
   <ItemGroup>

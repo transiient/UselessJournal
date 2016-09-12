@@ -1,14 +1,11 @@
 #include <iostream>
 
 #include "Notes.h"
-#include "NoteManager.h"
 
 // Note class
 note::note(std::string noteTitle, std::string noteBody) { // TODO: Add date parameter
 	this->noteTitle = noteTitle;
 	this->noteBody = noteBody;
-
-	NoteAPI::addNoteToJournal(*this);
 }
 note::~note() {
 	// should be garbage collected, right?
@@ -16,6 +13,10 @@ note::~note() {
 	this->noteBody  = "";
 }
 
+std::string note::getNoteTitle() {
+	// Return the title of the current note
+	return this->noteTitle;
+}
 std::string note::getNoteBody() {
 	// Return the body of the current note
 	return this->noteBody;

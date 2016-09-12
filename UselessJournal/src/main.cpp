@@ -1,9 +1,4 @@
-#define KEY_MENU_DOWN   80
-#define KEY_MENU_UP     72
-#define KEY_ENTER       13
-
 #include <iostream>
-#include <conio.h>
 #include <string>
 
 //#include "io.h"
@@ -13,20 +8,24 @@
 int main() {
 	std::cout << "Welcome to UselessJournal - The journal application that doesn't save your notes after closing!" << std::endl;
 
-	int selected;
-	ModeSelector selector;
-	selector.selector(selected);
+	int selected = 0;
+	ModeSelector mainMenu;
 
-	switch (selected) {
-	case 0:
-		// 0, New Note
-		NoteAPI::newNoteWizard();
-	case 1:
-		// 1, Modify Note // Will become "Manage notes" (print list of notes with options below)
-		
-	case 2:
-		// 2, Exit
-		std::cout << "Bye!" << std::endl;
-		return 0;
+	while (!selected) {
+		mainMenu.selector(selected);
+
+		switch (selected) {
+		case 0: // New Note
+			NoteAPI::newNoteWizard();
+			selected = 0;
+		case 1: // Manage Notes
+			NoteAPI::manageNotes();
+			selected = 0;
+		case 2: // Exit
+			std::cout << "Bye!" << std::endl;
+			break;
+		}
 	}
+
+	return 0;
 }
