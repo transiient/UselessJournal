@@ -12,7 +12,7 @@
 // MODE SELECTOR
 class ModeSelector {
 	// Current selection
-	int ModeSelector::currentSelection = 0;
+	int currentSelection = 0;
 
 	// Change id's state to selected
 	void makeSelected(int id);
