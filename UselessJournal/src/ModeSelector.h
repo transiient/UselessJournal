@@ -21,13 +21,13 @@ class ModeSelector {
 	std::string isSelected(int id);
 
 	// The default menu options
-	std::vector<std::string> ModeSelector::m_DefaultChoices = {
+	std::vector<std::string> m_DefaultChoices = {
 		"Create a note",
 		"Manage my notes",
 		"Exit (and delete notes)"
 	};
 	// This can be edited using UpdateChoices() to add different options
-	std::vector<std::string> ModeSelector::m_CurrentChoices;
+	std::vector<std::string> m_CurrentChoices;
 
 public:
 	void setDefaultChoices();
