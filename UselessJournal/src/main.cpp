@@ -6,31 +6,27 @@
 #include <conio.h>
 #include <string>
 
-#include "io.h"
+//#include "io.h"
+#include "NoteManager.h"
 #include "ModeSelector.h"
-#include "Notes.h"
 
-using namespace std;
-
-// Runs on launch (yay)
 int main() {
-	cout << "Welcome to UselessJournal - The journal application that doesn't save your notes!" << endl;
+	std::cout << "Welcome to UselessJournal - The journal application that doesn't save your notes after closing!" << std::endl;
 
 	int selected;
-	ModeSelector ms;
-	ms.selector(selected);
+	ModeSelector selector;
+	selector.selector(selected);
 
 	switch (selected) {
 	case 0:
-		// 0 is New Note
+		// 0, New Note
+		NoteAPI::newNoteWizard();
 	case 1:
-		// 1 is Modify Note
-		cout << "Which note ID?: ";
-		int ttitid;
-		cin >> ttitid;
+		// 1, Modify Note // Will become "Manage notes" (print list of notes with options below)
+		
 	case 2:
-		// 2 is Exit
-		cout << "Bye!" << endl;
-		exit(0);
+		// 2, Exit
+		std::cout << "Bye!" << std::endl;
+		return 0;
 	}
 }

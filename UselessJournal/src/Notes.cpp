@@ -1,16 +1,31 @@
 #include <iostream>
 
 #include "Notes.h"
+#include "NoteManager.h"
 
 // Note class
-note::note(string noteTitle, string noteBody) {
+note::note(std::string noteTitle, std::string noteBody) { // TODO: Add date parameter
 	this->noteTitle = noteTitle;
-	this->noteTitle = noteBody;
+	this->noteBody = noteBody;
+
+	NoteAPI::addNoteToJournal(*this);
 }
 note::~note() {
-	delete this;
+	// should be garbage collected, right?
+	this->noteTitle = "";
+	this->noteBody  = "";
 }
-void note::Modify(string newTitle, string newBody) {
-	this->noteBody = newBody;
-	this->noteTitle = newTitle;
+
+std::string note::getNoteBody() {
+	// Return the body of the current note
+	return this->noteBody;
+}
+std::string note::changeNoteBody(std::string newNoteBody) {
+	if (newNoteBody.size() < 1) {
+		return this->noteBody;
+	}
+	else {
+		this->noteBody = newNoteBody;
+		return this->noteBody;
+	}
 }

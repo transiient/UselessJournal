@@ -2,17 +2,18 @@
 
 #include <string>
 #include <vector>
-using namespace std;
 
 // Single Note
 class note {
-	int noteId;
-	string noteTitle, noteBody;
+	std::string noteTitle, noteBody;
 public:
-	note(string noteTitle, string noteBody);
+	note(std::string noteTitle, std::string noteBody);
 	~note();
 
-	string getNoteBody();
-	string getNoteBody(); // returns: current body
-	string changeNoteBody(); // returns: new body
+	std::string getNoteBody(); // returns: current body
+	std::string changeNoteBody(std::string newNoteBody); // returns: new body
+
+	friend bool operator==(const note &l, const note &r) {
+		return (l.noteTitle == r.noteTitle && l.noteBody == r.noteBody);
+	}
 };

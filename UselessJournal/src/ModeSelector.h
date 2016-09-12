@@ -1,9 +1,10 @@
 #pragma once
+//TODO: Rewrite this, it's disgusting.
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "util/Clearwindow.h"
-using namespace std;
 
 // MODE SELECTOR
 class ModeSelector {
@@ -16,7 +17,7 @@ class ModeSelector {
 		refreshMenu();
 	}
 	// Get id's state
-	string isSelected(int id) {
+	std::string isSelected(int id) {
 		if (currentSelection == id) {
 			return "[>]";
 		}
@@ -25,16 +26,22 @@ class ModeSelector {
 		}
 	}
 
+	std::vector<std::string> m_Choices = { // Make use of this instead of the current implementation
+		"Create a note",
+		"Manage my notes",
+		"Exit (and delete notes)"
+	};
+
 public:
 	// Select a mode using raw console input
 	void refreshMenu() {
-		for (int i = 0; i < 30; i++) cout << endl; // Clear window
+		for (int i = 0; i < 30; i++) std::cout << std::endl; // Clear window
 
-		cout << "Select an operation (use W, S and Enter to select):" << endl << endl;
+		std::cout << "Select an operation (use W, S and Enter to select):" << std::endl << std::endl;
 
-		cout << isSelected(0) << " New entry" << endl;
-		cout << isSelected(1) << " Modify entry" << endl;
-		cout << isSelected(2) << " Exit (and delete notes)" << endl;
+		std::cout << isSelected(0) << " New entry" << std::endl;
+		std::cout << isSelected(1) << " Modify entry" << std::endl;
+		std::cout << isSelected(2) << " Exit (and delete notes)" << std::endl;
 	}
 
 	int selector(int &variable) {
