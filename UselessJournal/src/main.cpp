@@ -26,12 +26,13 @@ int main() {
 			NoteAPI::saveNotes();
 			selected = 0;
 			break;
-		case 3: // Save Notes
+		case 3: // Load Notes
 			NoteAPI::loadNotes();
 			selected = 0;
 			break;
-		case 4:
-			std::cout << "Bye!" << std::endl;
+		case 4: // Exit
+			NoteAPI::saveNotes();
+			std::cout << "Saved your notes, now exiting..." << std::endl;
 			return 0;
 		}
 	}
