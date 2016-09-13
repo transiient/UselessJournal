@@ -24,7 +24,9 @@ class ModeSelector {
 	std::vector<std::string> m_DefaultChoices = {
 		"Create a note",
 		"Manage my notes",
-		"Exit (and delete notes)"
+		"Save my notes",
+		"Load my notes",
+		"Exit"
 	};
 	// This can be edited using UpdateChoices() to add different options
 	std::vector<std::string> m_CurrentChoices;

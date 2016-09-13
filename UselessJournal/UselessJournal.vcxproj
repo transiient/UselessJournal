@@ -114,13 +114,13 @@
     <ClCompile Include="src\ModeSelector.cpp" />
     <ClCompile Include="src\NoteManager.cpp" />
     <ClCompile Include="src\Notes.cpp" />
+    <ClCompile Include="src\util\io.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\io.h" />
+    <ClInclude Include="src\util\io.h" />
     <ClInclude Include="src\ModeSelector.h" />
     <ClInclude Include="src\NoteManager.h" />
     <ClInclude Include="src\Notes.h" />
-    <ClInclude Include="src\util\Clearwindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

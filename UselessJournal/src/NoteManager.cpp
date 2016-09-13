@@ -99,3 +99,11 @@ void NoteAPI::manageNotes() {
 		return;
 	}
 }
+
+void NoteAPI::saveNotes() {
+	IO::saveJournalToFile(m_Journal);
+}
+
+void NoteAPI::loadNotes() {
+	IO::openJournalFromFile(m_Journal);
+}

@@ -6,6 +6,7 @@
 
 #include "ModeSelector.h"
 #include "Notes.h"
+#include "util/io.h"
 
 /*
 	Note Manager
@@ -32,4 +33,8 @@ public:
 	static note newNoteWizard();
 	// Manage notes in the journal
 	static void manageNotes();
+	// Save the journal
+	static void saveNotes();
+	// Load the journal
+	static void loadNotes();
 };
