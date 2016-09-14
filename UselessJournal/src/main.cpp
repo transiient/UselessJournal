@@ -7,8 +7,18 @@
 int main() {
 	int selected = 0;
 	ModeSelector mainMenu;
-
+	
 	mainMenu.setType("Main Menu");
+	mainMenu.updateChoices({
+		"Create a note",
+		"Manage my notes",
+		"Save my notes",
+		"Load my notes",
+		"Exit"
+	});
+
+	// Load on startup - TODO: Add option
+	NoteAPI::loadNotes();
 
 	while (!selected) {
 		mainMenu.selector(selected);
@@ -31,7 +41,7 @@ int main() {
 			selected = 0;
 			break;
 		case 4: // Exit
-			NoteAPI::saveNotes();
+			NoteAPI::saveNotes(); // TODO: Add option
 			std::cout << "Saved your notes, now exiting..." << std::endl;
 			return 0;
 		}

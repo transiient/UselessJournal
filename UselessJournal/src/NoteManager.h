@@ -14,7 +14,7 @@
 
 class NoteAPI {
 private:
-	static std::vector<note> m_Journal; // TODO: Make it work.
+	static std::vector<note> m_Journal;
 public:
 	// Find a note at an index and return it
 	static note getNoteAtIndex(int id);

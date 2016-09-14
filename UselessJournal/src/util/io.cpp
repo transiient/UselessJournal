@@ -3,7 +3,6 @@
 // Keep these as they are for now, TODO: Make these editable by changing the way openJournalFromFile works
 #define NOTE_TITLE_PREFIX "##T"
 #define NOTE_BODY_PREFIX  "##B"
-#define NOTE_LINE_AFTER   "##D"
 
 #define LOG(st) std::cout << st << std::endl
 
@@ -11,44 +10,33 @@
 const std::string IO::defaultJournalPath = "journal.uj";
 
 // Open journal from a specified file
-bool IO::openJournalFromFile(std::vector<note> &notes, std::string path) {
-	std::ifstream journalFileStream(path);
-	std::vector<std::string> LINES;
-	int iterator = 1;
+bool IO::openJournalFromFile(std::vector<note> &notes, std::string path) { /*! *** MEMORY LEAK *** !*/
+	std::ifstream journalFileStream(path); // File stream
+	std::vector<std::string> LINES; // Vector to store every line of the file in
 
 	if (journalFileStream.good()) {
+		notes = {};
+
 		while (!journalFileStream.eof()) {
-			LOG("Getting line");
-			LOG(iterator);
-
-			std::string lineTmp;
-			std::getline(journalFileStream, lineTmp); // this failed when it used LINES[iterator] because you need to use push_back instead!
-			LINES.push_back(lineTmp);
-
-			LOG("    Got line");
-			++iterator;
+			std::string line; std::getline(journalFileStream, line);	 // Get line
+			LINES.push_back(line);										 // and push it to the back
 		}
 	}
-	else {
-		LOG("Couldn't open file.");
-	}
+	else { LOG("Couldn't open file."); }
 
-	// For each line, check what it is by the prefixes at the top and set up notes
-	for (int i = 0; i < LINES.size(); i++) {
-		std::string curLn = LINES[i]; // current line
-		std::string title, body;
+	for (int i = 0; i < LINES.size(); i += 2) { // For each 2 lines, check what they are by the prefixes and set up notes
+		if (LINES[i][0] == '#' && LINES[i][1] == '#') { // If it's prefixed
+			std::string xtitle, xbody; // Create variables
 
-		if (curLn[0] == '#' && curLn[1] == '#') { // If it's made by this script
-			if (curLn[2] == 'T') { // Title field
-				title = LINES[i];
-				title.erase(0, 2);
-			}
-			else if (curLn[2] == 'B') { // Body field
-				body = LINES[i + 1];
-				body.erase(0, 2);
+			if (LINES[i][2] == 'T' && LINES[i + 1][2] == 'B') { // Check the next characters
+				xtitle = LINES[i];
+				xbody  = LINES[i + 1];
 			}
 
-			notes.push_back(note(title, body));
+			xtitle.erase(0, 4);
+			xbody.erase(0, 4);
+
+			notes.push_back(note(xtitle, xbody)); // Create a note and push it into the notes vector
 		}
 	}
 
@@ -68,15 +56,16 @@ bool IO::openJournalFromFile(std::vector<note> &notes) {
 		  path           - The full path to save to, including filename and extension
 */
 bool IO::saveJournalToFile(std::vector<note> notes, std::string path) {
+	if (!remove(path.c_str())) { LOG("Deleted old file"); }
+
 	std::ofstream journalFileStream(path);
 
 	if (journalFileStream.good()) {
-		LOG("Successfully opened file");
+		LOG("Successfully opened new file");
 
 		for (int i = 0; i < notes.size(); i++) {
 			journalFileStream << NOTE_TITLE_PREFIX << " " << notes[i].getNoteTitle() << std::endl;
 			journalFileStream << NOTE_BODY_PREFIX  << " " << notes[i].getNoteBody()  << std::endl;
-			journalFileStream << NOTE_LINE_AFTER   << std::endl;
 		}
 	}
 	else {

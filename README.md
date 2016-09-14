@@ -1,26 +1,24 @@
 # Useless Journal
 
-A silly command-line journal application I'm writing. It doesn't save notes after closing, but I'm planning to implement that. It *should*, theoretically, work on Linux as well as Windows but it hasn't been tested and that wasn't the aim. I may add Linux support in the future though.
-
-### Building
-
-Open up the solution file in Visual Studio and click Build. More instructions coming soon.
+A silly, almost useless command-line note-taking application. Built for Windows, but it *should* work on Linux as well (not yet tested).
 
 ### Using UJ
 
-UJ isn't exactly in a usable state. Just run `uselessjournal` in console and see for yourself.
+Just click Run in Visual Studio, you'll see why this is called Useless Journal.
 
 ### Features
 
-Hah, good one.
+* Write simple notes
+* Save notes in an easy-to-read text format
+* Load journals
 
 ###### Plans
 
-* .txt, .xml export
-* HTML export
-* Full Linux support
-* Qt GUI
+* .txt, .xml export **[next version]**
+* Confirmed Linux support **[coming soon]**
+* HTML export **[1.0]**
+* Qt GUI **[1.0]**
 
 ### Licence
 
-Useless Journal is licensed under the MIT Licence. Or at least it should be. Honestly I don't really care, it's just a bit of fun, right?
+Useless Journal is licensed under the MIT Licence.
