@@ -3,6 +3,7 @@
 
 #include "NoteManager.h"
 #include "ModeSelector.h"
+#include "Settings.h"
 
 int main() {
 	int selected = 0;
@@ -17,8 +18,10 @@ int main() {
 		"Exit"
 	});
 
-	// Load on startup - TODO: Add option
-	NoteAPI::loadNotes();
+	// Load on startup, if enabled
+	if (Settings::getLoadOnStart()) {
+		NoteAPI::loadNotes();
+	}
 
 	while (!selected) {
 		mainMenu.selector(selected);
@@ -41,8 +44,11 @@ int main() {
 			selected = 0;
 			break;
 		case 4: // Exit
-			NoteAPI::saveNotes(); // TODO: Add option
-			std::cout << "Saved your notes, now exiting..." << std::endl;
+			if (Settings::getSaveOnExit()) {
+				NoteAPI::saveNotes();
+				std::cout << "Saved your notes. ";
+			}
+			std::cout << "Now exiting..." << std::endl;
 			return 0;
 		}
 	}

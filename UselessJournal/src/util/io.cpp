@@ -77,15 +77,63 @@ bool IO::saveJournalToFile(std::vector<note> notes, std::string path) {
 	return 1;
 }
 // Save to default path (folder root)
-bool IO::saveJournalToFile(std::vector<note> notes) {
+bool IO::saveJournalToFile(std::vector<note> notes) { // not tested
 	return saveJournalToFile(notes, defaultJournalPath);
 }
 
 // Export as .txt
 bool IO::exportJournalToTxt(std::string inPath, std::string outPath) {
+	std::vector<note> notes;
+	openJournalFromFile(notes, inPath);
+	std::ofstream exportFileStream(outPath);
+
+	if (exportFileStream.good()) {
+		LOG("Opened output file");
+
+		exportFileStream << "Useless Journal exported notes\n\n" << std::endl;
+
+		for (int i = 0; i < notes.size(); i++) {
+			exportFileStream << notes[i].getNoteTitle() << std::endl;
+			exportFileStream << "    " << notes[i].getNoteBody() << std::endl;
+		}
+	}
+	else {
+		LOG("Couldn't open file.");
+	}
+
+	exportFileStream.close();
+	LOG("Saved");
 	return 0;
 }
 // Export as .xml
 bool IO::exportJournalToXml(std::string inPath, std::string outPath) {
+	return 0;
+}
+// Export as .html
+bool IO::exportJournalToHtml(std::string inPath, std::string outPath) { // not tested
+	std::vector<note> notes;
+	openJournalFromFile(notes, inPath);
+	std::ofstream exportFileStream(outPath);
+
+	if (exportFileStream.good()) {
+		LOG("Opened output file");
+
+		exportFileStream << "<html><head><title>Useless Journal - Exported notes</title></head><body>" << std::endl;
+
+		for (int i = 0; i < notes.size(); i++) {
+			exportFileStream << "<div class='note'>\n";
+			exportFileStream << "<h1>" << notes[i].getNoteTitle() << "</h1>\n";
+			exportFileStream << "<p>" << notes[i].getNoteBody() << "</p>\n";
+			exportFileStream << "</div>" << std::endl;
+		}
+
+		exportFileStream << "</body></html>" << std::endl;
+	}
+	else {
+		LOG("Couldn't open file.");
+	}
+
+	exportFileStream.close();
+	LOG("Saved");
 	return 0;
 }

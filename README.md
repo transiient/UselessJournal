@@ -1,24 +1,26 @@
-# Useless Journal
+# UJournal
 
-A silly, almost useless command-line note-taking application. Built for Windows, but it *should* work on Linux as well (not yet tested).
+A silly, almost useless command-line note-taking application. Originally built for Windows, but it'll work on Linux and Mac once I start using libcurses instead of conio.
 
-### Using UJ
+### Using UJournal
 
-Just click Run in Visual Studio, you'll see why this is called Useless Journal.
+There's no build system yet, but I'll add one at some point.
 
 ### Features
 
 * Write simple notes
-* Save notes in an easy-to-read text format
+* Save journals in an easy-to-read text format
 * Load journals
 
 ###### Plans
 
-* .txt, .xml export **[next version]**
-* Confirmed Linux support **[coming soon]**
+* Set custom save/load paths
+* .txt, .xml export **[coming soon]**
+* Linux support with libcurses **[coming soon]**
 * HTML export **[1.0]**
 * Qt GUI **[1.0]**
+* Build system **[1.0]**
 
 ### Licence
 
-Useless Journal is licensed under the MIT Licence.
+UJournal is licensed under the MIT Licence.

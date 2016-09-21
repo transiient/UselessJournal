@@ -28,4 +28,6 @@ public:
 	static bool exportJournalToTxt(std::string inPath, std::string outPath);
 	// Export as .xml
 	static bool exportJournalToXml(std::string inPath, std::string outPath);
+	// Export as .html
+	static bool exportJournalToHtml(std::string inPath, std::string outPath);
 };
