@@ -41,7 +41,7 @@ void ModeSelector::refreshMenu() {
 	// Clear screen to redraw
 	for (int i = 0; i < 60; i++) std::cout << std::endl;
 
-	std::cout << "Useless Journal :: " << m_MenuType << std::endl << std::endl << std::endl << std::endl << std::endl;
+	std::cout << "UJournal :: " << m_MenuType << std::endl << std::endl << std::endl << std::endl << std::endl;
 	std::cout << "Select an option (use the Up and Down arrows, Enter to select):" << std::endl << std::endl;
 
 	// Generate menu from m_CurrentChoices

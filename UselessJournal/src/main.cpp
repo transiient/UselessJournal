@@ -15,8 +15,12 @@ int main() {
 		"Manage my notes",
 		"Save my notes",
 		"Load my notes",
+		"Edit settings",
 		"Exit"
 	});
+
+	// Load settings
+	Settings::loadAll();
 
 	// Load on startup, if enabled
 	if (Settings::getLoadOnStart()) {
@@ -43,11 +47,18 @@ int main() {
 			NoteAPI::loadNotes();
 			selected = 0;
 			break;
-		case 4: // Exit
+		case 4: // Edit settings
+			//std::cout << std::endl << std::endl << std::endl << "Settings editing is coming soon. Very soon." << std::endl << "Press Enter to go back" << std::endl;
+			//std::cin.clear(); std::cin.ignore();
+			Settings::editWizard();
+			selected = 0;
+			break;
+		case 5: // Exit
 			if (Settings::getSaveOnExit()) {
 				NoteAPI::saveNotes();
 				std::cout << "Saved your notes. ";
 			}
+			Settings::saveAll();
 			std::cout << "Now exiting..." << std::endl;
 			return 0;
 		}
