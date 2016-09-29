@@ -1,10 +1,12 @@
 #include <iostream>
 #include <string>
-
+/*
 #include "NoteManager.h"
 #include "ModeSelector.h"
 #include "Settings.h"
-
+*/
+#include "awe/interface.h"
+/*
 int main() {
 	int selected = 0;
 	ModeSelector mainMenu;
@@ -48,8 +50,6 @@ int main() {
 			selected = 0;
 			break;
 		case 4: // Edit settings
-			//std::cout << std::endl << std::endl << std::endl << "Settings editing is coming soon. Very soon." << std::endl << "Press Enter to go back" << std::endl;
-			//std::cin.clear(); std::cin.ignore();
 			Settings::editWizard();
 			selected = 0;
 			break;
@@ -65,5 +65,20 @@ int main() {
 	}
 
 	system("PAUSE"); // temp
+	return 0;
+	
+
+	return UJUI::Interface();
+}*/
+
+#ifdef _WIN32
+int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE, wchar_t*, int nCmdShow) {
+#else
+int main() {
+#endif
+
+	UJApp app;
+	app.Run();
+
 	return 0;
 }
